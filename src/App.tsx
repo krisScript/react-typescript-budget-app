@@ -1,28 +1,27 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React, { useContext } from 'react';
+import {observer,} from 'mobx-react-lite'
+import {toJS} from 'mobx'
 import './App.css';
-
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.tsx</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
+import Expense from './types/Expense'
+import RootStoreContext from './stores/RootStore'
+const App = observer(() => {
+  const RootStore  = useContext(RootStoreContext)
+  const date = new Date()
+  const testExpense : Expense = {
+    cost:12,
+    name:'new',
+    date,
+    category:'sport',
   }
-}
+  // ExpensesStore.expenses = [...ExpensesStore.expenses,testExpense]
+  // ExpensesStore.expenses.forEach(i => {
+  //   console.log(i.cost)
+  // })
+  return (
+  
+    <div>App</div>
+
+  )
+})
 
 export default App;
