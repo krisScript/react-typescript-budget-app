@@ -16,7 +16,7 @@ const Input: React.FunctionComponent<InputProps> = ({ name,
   }) => {
   return (
     <input
-      // className={`input  ${error ? 'input--error' : ''}`}
+      className={"input"}
       onChange={e => setHook(e.target.value)}
       value={value}
       type={type}

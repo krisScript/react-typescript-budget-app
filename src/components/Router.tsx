@@ -8,23 +8,23 @@ const Router: FunctionComponent = () => {
   return (<BrowserRouter>
           <>
             <Navbar />
-            <div className="main--container">
+            <div className="main-container">
               <Switch>
               <Route
-                  exact
-                  path="/"
-                  render={() => (
-                    <Suspense fallback={<Loader />}>
-                      <Home />
-                    </Suspense>
-                  )}
-                />
-              <Route
-                  exact
+              exact
                   path="/add-expense"
                   render={() => (
                     <Suspense fallback={<Loader />}>
                       <ExpenseForm />
+                    </Suspense>
+                  )}
+                />
+              <Route
+              exact
+                  path="/"
+                  render={() => (
+                    <Suspense fallback={<Loader />}>
+                      <Home />
                     </Suspense>
                   )}
                 />

@@ -1,0 +1,32 @@
+.expense {
+  @include border;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 1rem;
+  @include large-screen {
+    width: 50vw;
+    height: 8rem;
+  }
+  &-icon {
+      @include center;
+      width: 2.4rem;
+      height: 2.4rem;
+    border-radius: 100%;
+    background: $primary;
+    padding: 0.5rem;
+    font-size: 1.2rem;
+    color: $white;
+  }
+  &-name,
+  &-cost {
+    font-size: 1rem;
+  }
+  button{
+      border: none;
+      padding: 0.5rem;
+      background: $danger;
+      color:$white;
+  }
+}

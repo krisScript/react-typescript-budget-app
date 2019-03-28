@@ -11,8 +11,9 @@ export class RootStore {
   expensesStore = new ExpensesStore();
   idStore = new IdStore()
   constructor() {
-    hydrate("id", this.idStore);
-    hydrate("expenses", this.expensesStore);
+    console.log('nani')
+    hydrate("id", this.idStore)
+    hydrate("expenses", this.expensesStore)
   }
 }
 

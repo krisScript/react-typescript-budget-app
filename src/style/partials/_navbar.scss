@@ -1,0 +1,22 @@
+.navbar{
+    background:$white;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content:left;
+    border-bottom: solid 0.5px lighten($lighter-dark, 50%);
+    list-style: none;
+    background: $primary;
+    a{
+        text-decoration: none;
+        color: $white;
+        margin-right:0.5rem;
+        font-size: 0.8rem;
+        padding: 0.3rem;
+    }
+    .active{
+        background: $white;
+        color: $primary;
+        @include border;
+    }
+}

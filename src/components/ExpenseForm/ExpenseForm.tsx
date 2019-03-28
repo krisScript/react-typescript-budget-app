@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 import Input from '../Input/Input';
 import RootStoreContext from '../../stores/RootStore';
 import { observer } from 'mobx-react-lite';
+
 const ExpenseForm: FunctionComponent<any> = observer(props => {
   const [cost, setCost] = useState('');
   const [name, setName] = useState('');
@@ -23,10 +24,10 @@ const ExpenseForm: FunctionComponent<any> = observer(props => {
     };
     idStore.incrementId();
     expensesStore.addExpense(expense);
-    props.history.replace(`/w`);
+    props.history.replace(`/`);
   };
   return (
-    <form onSubmit={submitHandler}>
+    <form onSubmit={submitHandler} className="form">
       <Input
         name={'name'}
         setHook={setName}
@@ -41,11 +42,13 @@ const ExpenseForm: FunctionComponent<any> = observer(props => {
         value={cost}
         type={'number'}
       />
-      <select value={category} onChange={e => setCategory(e.target.value)}>
+      <select value={category} className="input" onChange={e => setCategory(e.target.value)}>
         <option value="sport">Sport</option>
         <option value="bills">Bills</option>
-        <option value="car">Car</option>
         <option value="clothing">Clothing</option>
+        <option value="pet">Pet</option>
+        <option value="bills">Food</option>
+        <option value="education">Education</option>
       </select>
       <button>Add Expense</button>
     </form>

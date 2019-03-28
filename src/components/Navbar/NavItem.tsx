@@ -7,8 +7,8 @@ interface NavItemProps {
 }
 const NavItem: FunctionComponent<NavItemProps> = ({pathname,linkContent}) => {
   return (
-     <li>
-          <NavLink to={pathname} activeClassName={"active"}>{linkContent}</NavLink>
+     <li className="navbar-item">
+          <NavLink to={pathname} activeClassName={"active"} exact={true}>{linkContent}</NavLink>
      </li>
   )
 };
