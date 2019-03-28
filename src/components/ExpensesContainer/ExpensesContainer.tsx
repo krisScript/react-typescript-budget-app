@@ -6,6 +6,7 @@ interface ExpensesContainerProps{
     expenses:Expense[]
 }
 const ExpensesContainer: FunctionComponent<ExpensesContainerProps> = ({expenses}) => {
+    console.log(expenses)
   return (
     <>
     {expenses ? (

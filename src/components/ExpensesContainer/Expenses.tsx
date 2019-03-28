@@ -10,6 +10,7 @@ const Expenses: FunctionComponent<ExpensesProps> = ({expenses}) => {
       {expenses.map(expense => {
         return (
           <Expense
+            key={expense.id}
             expense={expense}
           />
         );

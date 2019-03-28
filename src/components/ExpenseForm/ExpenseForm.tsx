@@ -1,14 +1,14 @@
 import React, { FunctionComponent, useState, useContext } from 'react';
 import Expense from '../../types/Expense';
-import {withRouter} from 'react-router-dom'
+import { withRouter } from 'react-router-dom';
 import Input from '../Input/Input';
 import RootStoreContext from '../../stores/RootStore';
-import {observer} from 'mobx-react-lite'
-const ExpenseForm: FunctionComponent <any>= observer((props) => {
+import { observer } from 'mobx-react-lite';
+const ExpenseForm: FunctionComponent<any> = observer(props => {
   const [cost, setCost] = useState('');
   const [name, setName] = useState('');
   const [category, setCategory] = useState('');
-  const { expensesStore } = useContext(RootStoreContext);
+  const { idStore, expensesStore } = useContext(RootStoreContext);
   const submitHandler = (e: any) => {
     e.preventDefault();
     const date = new Date();
@@ -19,10 +19,11 @@ const ExpenseForm: FunctionComponent <any>= observer((props) => {
       name,
       category,
       date: humanReadableDate,
-      id: expensesStore.expenses.length
+      id: idStore.id
     };
-   expensesStore.addExpense(expense)
-   props.history.replace(`/`);
+    idStore.incrementId();
+    expensesStore.addExpense(expense);
+    props.history.replace(`/w`);
   };
   return (
     <form onSubmit={submitHandler}>
@@ -33,7 +34,7 @@ const ExpenseForm: FunctionComponent <any>= observer((props) => {
         value={name}
         type={'text'}
       />
-       <Input
+      <Input
         name={'cost'}
         setHook={setCost}
         placeholder={'Cost'}
@@ -48,7 +49,7 @@ const ExpenseForm: FunctionComponent <any>= observer((props) => {
       </select>
       <button>Add Expense</button>
     </form>
-  )
-})
+  );
+});
 
 export default withRouter(ExpenseForm);
