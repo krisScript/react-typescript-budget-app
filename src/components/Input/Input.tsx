@@ -6,6 +6,7 @@ interface InputProps {
     placeholder:string,
     value:string,
     type:string,
+
 }
 const Input: React.FunctionComponent<InputProps> = ({ name,
   setHook,
@@ -21,7 +22,7 @@ const Input: React.FunctionComponent<InputProps> = ({ name,
       type={type}
       placeholder={placeholder}
       name={name}
-      // required
+      required
     />
   )
 };
