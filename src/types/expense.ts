@@ -1,7 +1,8 @@
 interface Expense {
     cost:number;
     name:string,
-    date:Date;
+    date:string;
     category:string,
+    id:number,
 }
 export default Expense
