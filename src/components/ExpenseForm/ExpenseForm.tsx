@@ -1,33 +1,25 @@
-import React, { FunctionComponent, useState, useContext } from 'react';
-import Expense from '../../types/Expense';
+import React, { FunctionComponent, useState, useContext,SyntheticEvent} from 'react';
 import { withRouter } from 'react-router-dom';
 import Input from '../Input/Input';
 import RootStoreContext from '../../stores/RootStore';
-import { observer } from 'mobx-react-lite';
-
+import { observer } from 'mobx-react-lite'
+import submitHandler from './submitHandler';
 const ExpenseForm: FunctionComponent<any> = observer(props => {
   const [cost, setCost] = useState('');
   const [name, setName] = useState('');
   const [category, setCategory] = useState('');
   const { idStore, expensesStore } = useContext(RootStoreContext);
-  const submitHandler = (e: any) => {
-    e.preventDefault();
-    const date = new Date();
-    const dateObject = new Date(Date.parse(date.toString()));
-    const humanReadableDate = dateObject.toDateString();
-    const expense: Expense = {
-      cost: Number(cost),
-      name,
-      category,
-      date: humanReadableDate,
-      id: idStore.id
-    };
-    idStore.incrementId();
-    expensesStore.addExpense(expense);
-    props.history.replace(`/`);
-  };
+
   return (
-    <form onSubmit={submitHandler} className="form">
+    <form data-testid="form" onSubmit={e => submitHandler({
+      e,
+      cost,
+      name,
+      props,
+      category,
+      idStore,
+      expensesStore,
+    }) } className="form">
       <Input
         name={'name'}
         setHook={setName}
@@ -42,7 +34,7 @@ const ExpenseForm: FunctionComponent<any> = observer(props => {
         value={cost}
         type={'number'}
       />
-      <select value={category} className="input" onChange={e => setCategory(e.target.value)}>
+      <select value={category} className="input" onChange={e => setCategory(e.target.value)} data-testid="category" name="category">
         <option value="sport">Sport</option>
         <option value="bills">Bills</option>
         <option value="clothing">Clothing</option>
